@@ -13,7 +13,7 @@ namespace Reto1
         public static void Main(string[] args)
         {
             string path = @"C:\Users\juana\source\repos\Reto1\Reto1\Taller_herencia.txt";   
-            Verificador_txt verificador = new Verificador_txt(path);
+            Verificador verificador = new Verificador(path);
             while(true)
             {
                 Console.WriteLine("Ingrese el ID que desea buscar (o 0 para salir): ");

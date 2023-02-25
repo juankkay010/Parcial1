@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Reto1
 {
-    internal class Verificador_txt : Cargar
+    internal class Verificador:Cargar
     {
         public List<string[]> invitados = new List<string[]>();
-        public Verificador_txt(string path) : base(path)
+        public Verificador(string path) : base(path)
         {
             foreach (string invitado in informacion)
             {
