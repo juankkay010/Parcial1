@@ -16,23 +16,27 @@ namespace Reto1
             Cargar archivo = new Cargar(path);    
 
 
-
             Verificador_txt verificador = new Verificador_txt(path);
             while(true)
             {
                 Console.WriteLine("Ingrese el ID que desea buscar (o 0 para salir): ");
                 string id = Console.ReadLine();
+                int edad = verificador.Es_mayor_de_18(id);
                 if (id == "0")
                 {
                     break;
                 }
                 if (verificador.Si_esta_en_invitados(id))
                 {
-                    if (verificador.Es_mayor_de_18(id))
+                    if (verificador.Es_mayor_de_18(id) >= 18)
                     {
-                        Console.WriteLine("La persona con el ID {0} se encuentra en la lista y tiene una edad de {1}, por lo que podrá ingresar", id, verificador.invitados);
+                        Console.WriteLine("La persona con el ID {0} se encuentra en la lista y tiene una edad de {1}, por lo que podrá ingresar", id, edad);
                     }
-                    Console.WriteLine("La persona con el ID {0} se encuentra en la lista de invitados", id);
+                    else
+                    {
+                        Console.WriteLine("La persona con el ID {0} se encuentra en la lista de invitados pero tiene una edad de {1}, por lo que no podrá ingresar", id, edad);
+                    }
+                    
                 }    
                 else
                 {

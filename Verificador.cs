@@ -35,7 +35,7 @@ namespace Reto1
 
 
         }
-        public bool Es_mayor_de_18(string id)
+        public int Es_mayor_de_18(string id)
         {
             foreach (string[] invitado in invitados)
             {
@@ -46,16 +46,16 @@ namespace Reto1
                         int edad;
                         if (int.TryParse(invitado[3], out edad) && edad >= 18)
                         {
-                            return true;
+                            return edad;
                         }
                         else
                         {
-                            return false;
+                            return edad;
                         }
                     }
                 }
             }
-            return false;
+            return -1;
         }
 
     }
