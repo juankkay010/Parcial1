@@ -8,17 +8,17 @@ using System.Threading.Tasks;
 
 namespace Reto1
 {
-    internal class Verificador_txt:Cargar
+    internal class Verificador_txt : Cargar
     {
-        public List<string[]> invitados= new List<string[]>();
-        public Verificador_txt(string path): base(path)
+        public List<string[]> invitados = new List<string[]>();
+        public Verificador_txt(string path) : base(path)
         {
             foreach (string invitado in informacion)
             {
                 string[] lista_invitados = invitado.Split();
                 invitados.Add(lista_invitados);
             }
-             
+
         }
 
         public bool Si_esta_en_invitados(string id)
@@ -58,6 +58,36 @@ namespace Reto1
             return -1;
         }
 
+        public string validar_correo(string id)
+        {
+            foreach (string[] invitado in invitados)
+            {
+                if (this.Si_esta_en_invitados(id))
+                {
+                    if (invitado.Contains(id))
+                    {
+                        if (char.IsLetter(invitado[2][0]))
+                        {
+                            int posicion_conector = invitado[2].IndexOf("@");
+                            if (posicion_conector >= 0)
+                            {
+                                string slice = invitado[2].Substring(posicion_conector + 1);
+                                if (slice == "gmail" || slice == "hotmail" || slice == "live")
+                                {
+                                    if (invitado[2].EndsWith(".com") || invitado[2].EndsWith(".co") || invitado[2].EndsWith(".edu.co") || invitado[2].EndsWith(".org"))
+                                    {
+                                        return invitado[2];
+                                    }
+                                }
+                            }
+                        }
+                        return null;
+                    }
+                }
+            }
+            return null;
+        }
     }
-    
 }
+
+

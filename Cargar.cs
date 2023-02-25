@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Reto1
 {
-    internal class Cargar
+    abstract class Cargar
     {
         public List<string> informacion= new List<string>();
         public Cargar(string path)

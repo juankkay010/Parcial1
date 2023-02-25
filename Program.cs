@@ -12,16 +12,14 @@ namespace Reto1
     {
         public static void Main(string[] args)
         {
-            string path = @"C:\Users\juana\source\repos\Reto1\Reto1\Taller_herencia.txt";
-            Cargar archivo = new Cargar(path);    
-
-
+            string path = @"C:\Users\juana\source\repos\Reto1\Reto1\Taller_herencia.txt";   
             Verificador_txt verificador = new Verificador_txt(path);
             while(true)
             {
                 Console.WriteLine("Ingrese el ID que desea buscar (o 0 para salir): ");
                 string id = Console.ReadLine();
                 int edad = verificador.Es_mayor_de_18(id);
+                string email = verificador.validar_correo(id);
                 if (id == "0")
                 {
                     break;
@@ -30,7 +28,14 @@ namespace Reto1
                 {
                     if (verificador.Es_mayor_de_18(id) >= 18)
                     {
-                        Console.WriteLine("La persona con el ID {0} se encuentra en la lista y tiene una edad de {1}, por lo que podrá ingresar", id, edad);
+                        if (verificador.validar_correo(id) != null)
+                        {
+                            Console.WriteLine("La persona con el ID {0} se encuentra en la lista, tiene una edad de {1}, y su correo {2} es válido, por lo que podrá ingresar", id, edad, email);
+                        }
+                        else
+                        {
+                            Console.WriteLine("La persona con el ID {0} se encuentra en la lista y tiene una edad de {1} pero su correo {2} no es válido, por lo que no podra ingresar", id, edad, email);
+                        }
                     }
                     else
                     {
