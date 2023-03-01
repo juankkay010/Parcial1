@@ -10,7 +10,7 @@ namespace Reto1
     {
         public Verificador_csv()
         {
-            string file = @"C:\Users\juana\source\repos\Reto1\Reto1\Taller_herencia.csv";
+            string file = @"C:\Users\juana\source\repos\RETO2\Taller_herencia.csv";
             this.cargar_archivo(file);
             foreach (string invitado in informacion)
             {

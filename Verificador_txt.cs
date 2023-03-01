@@ -10,7 +10,7 @@ namespace Reto1
     {
         public Verificador_txt()
         {
-            string file = @"C:\Users\juana\source\repos\Reto1\Reto1\Taller_herencia.txt";
+            string file = @"C:\Users\juana\source\repos\RETO2\Taller_herencia.txt";
             this.cargar_archivo(file);
             foreach (string invitado in informacion)
             {

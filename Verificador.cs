@@ -10,7 +10,6 @@ namespace Reto1
 {
     abstract class Verificador:Cargar
     {
-        public List<string[]> invitados = new List<string[]>();
         public Verificador()
         {
             foreach (string invitado in informacion)
