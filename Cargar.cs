@@ -10,19 +10,27 @@ namespace Reto1
     abstract class Cargar
     {
         public List<string> informacion= new List<string>();
-        public Cargar(string path)
+        public void cargar_archivo(string path)
         {
-            StreamReader sr = new StreamReader(path);
-            sr.BaseStream.Seek(0, SeekOrigin.Begin);
+            try
+            {
+                StreamReader sr = new StreamReader(path);
+                sr.BaseStream.Seek(0, SeekOrigin.Begin);
 
-            string line = sr.ReadLine();
-            while (line != null)
-            {    
-                informacion.Add(line);
-                line = sr.ReadLine();
+                string line = sr.ReadLine();
+                while (line != null)
+                {
+                    informacion.Add(line);
+                    line = sr.ReadLine();
 
+                }
+                sr.Close();
             }
-            sr.Close();
+            catch (System.IO.FileNotFoundException)
+            {
+                throw new ArchivoNoEncontrado();
+            }
+            
         }
     }
 }

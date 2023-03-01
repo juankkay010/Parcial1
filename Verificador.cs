@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Reto1
 {
-    internal class Verificador:Cargar
+    abstract class Verificador:Cargar
     {
         public List<string[]> invitados = new List<string[]>();
-        public Verificador(string path) : base(path)
+        public Verificador()
         {
             foreach (string invitado in informacion)
             {
@@ -60,32 +60,34 @@ namespace Reto1
 
         public string validar_correo(string id)
         {
+            if (!this.Si_esta_en_invitados(id))
+            {
+                return null;
+            }
+
             foreach (string[] invitado in invitados)
             {
-                if (this.Si_esta_en_invitados(id))
+                if (invitado.Contains(id))
                 {
-                    if (invitado.Contains(id))
+                    char first_letter = invitado[2][0];
+                    if (char.IsLetter(first_letter))
                     {
-                        if (char.IsLetter(invitado[2][0]))
+                        int posicion_conector = invitado[2].IndexOf("@");
+                        if (posicion_conector >= 0)
                         {
-                            int posicion_conector = invitado[2].IndexOf("@");
-                            if (posicion_conector >= 0)
+                            string slice = invitado[2].Substring(posicion_conector + 1);
+                            if (slice.Contains("gmail") || slice.Contains("hotmail") || slice.Contains("live"))
                             {
-                                string slice = invitado[2].Substring(posicion_conector + 1);
-                                if (slice == "gmail" || slice == "hotmail" || slice == "live")
+                                if (invitado[2].EndsWith(".com") || invitado[2].EndsWith(".co") || invitado[2].EndsWith(".edu.co") || invitado[2].EndsWith(".org"))
                                 {
-                                    if (invitado[2].EndsWith(".com") || invitado[2].EndsWith(".co") || invitado[2].EndsWith(".edu.co") || invitado[2].EndsWith(".org"))
-                                    {
-                                        return invitado[2];
-                                    }
+                                    return invitado[2];
                                 }
                             }
                         }
-                        return null;
                     }
                 }
             }
-            return null;
+            return null; 
         }
     }
 }

@@ -43,13 +43,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArchivoNoEncontrado.cs" />
     <Compile Include="Cargar.cs" />
+    <Compile Include="Verificador_txt.cs" />
+    <Compile Include="Verificador_csv.cs" />
     <Compile Include="Verificador.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="Taller_herencia.csv" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -11,9 +11,8 @@ namespace Reto1
     internal class Program
     {
         public static void Main(string[] args)
-        {
-            string path = @"C:\Users\juana\source\repos\Reto1\Reto1\Taller_herencia.txt";   
-            Verificador verificador = new Verificador(path);
+        {  
+            Verificador_csv verificador = new Verificador_csv();
             while(true)
             {
                 Console.WriteLine("Ingrese el ID que desea buscar (o 0 para salir): ");
@@ -29,7 +28,7 @@ namespace Reto1
                     if (verificador.Es_mayor_de_18(id) >= 18)
                     {
                         if (verificador.validar_correo(id) != null)
-                        {
+                        { 
                             Console.WriteLine("La persona con el ID {0} se encuentra en la lista, tiene una edad de {1}, y su correo {2} es válido, por lo que podrá ingresar", id, edad, email);
                         }
                         else
